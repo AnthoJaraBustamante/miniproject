@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../data/models/result_arguments.dart';
+import '../global_widgets/constrained_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,8 +37,7 @@ class HomeScreenState extends State<HomeScreen> {
         title: const Text('Home Screen'),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: ConstrainedCard(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
