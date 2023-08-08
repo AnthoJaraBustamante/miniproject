@@ -73,9 +73,8 @@ class HomeScreenState extends State<HomeScreen> {
                         ? secondNumber
                         : firstNumber;
 
-                    for (int i = minNumber; i <= maxNumber; i++) {
-                      sum += i;
-                    }
+                    sum = (maxNumber * (maxNumber + 1) ~/ 2) -
+                        (minNumber * (minNumber - 1) ~/ 2);
 
                     Navigator.pushNamed(
                       context,
