@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../data/models/result_arguments.dart';
 import '../global_widgets/constrained_card.dart';
+import '../utils/device_info.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,57 +40,7 @@ class HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: ConstrainedCard(
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextField(
-                  controller: _firstNumberController,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter first number',
-                  ),
-                ),
-                sizedBox16,
-                TextField(
-                  controller: _secondNumberController,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  keyboardType: TextInputType.number,
-                  decoration:
-                      const InputDecoration(labelText: 'Enter second number'),
-                ),
-                sizedBox16,
-                ElevatedButton(
-                  onPressed: () {
-                    int firstNumber =
-                        int.tryParse(_firstNumberController.text) ?? 0;
-                    int secondNumber =
-                        int.tryParse(_secondNumberController.text) ?? 0;
-                    int sum = 0;
-                    int minNumber = firstNumber <= secondNumber
-                        ? firstNumber
-                        : secondNumber;
-                    int maxNumber = firstNumber <= secondNumber
-                        ? secondNumber
-                        : firstNumber;
-
-                    sum = (maxNumber * (maxNumber + 1) ~/ 2) -
-                        (minNumber * (minNumber - 1) ~/ 2);
-
-                    Navigator.pushNamed(
-                      context,
-                      '/result',
-                      arguments: ResultArguments(
-                        sum: sum,
-                        minNumber: minNumber,
-                        maxNumber: maxNumber,
-                      ),
-                    );
-                  },
-                  child: const Text('Submit'),
-                ),
-              ],
-            ),
+            child: DeviceInfoText(),
           ),
         ),
       ),

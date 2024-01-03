@@ -15,6 +15,7 @@ class ConstrainedCard extends StatelessWidget {
         constraints:
             const BoxConstraints(maxWidth: 500, minHeight: 200, minWidth: 500),
         child: Card(
+          // margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: child,
