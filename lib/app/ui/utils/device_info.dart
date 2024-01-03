@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DeviceInfoText extends StatelessWidget {
@@ -20,8 +23,14 @@ class DeviceInfoText extends StatelessWidget {
         );
         if (snapshot.hasData) {
           final data = snapshot.data!.data;
+
           return Column(
             children: [
+              Text(
+                '$defaultTargetPlatform',
+                textAlign: TextAlign.center,
+                style: inter,
+              ),
               ...data.entries
                   .map(
                     (e) => Text(
